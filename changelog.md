@@ -4,7 +4,7 @@ Record specific code changes after each commit. Most recent first.
 
 ---
 
-## [latest] — switch product and gut-brain thumbnails to SVG
+## [latest] — revert SVGs back to PNGs (SVGs had embedded raster content causing deploy failures)
 
 - `purchase.html`: product image changed from `pills-pack.png` to `pills-pack.svg`
 - `blog.html`: gut-brain card thumbnail changed from `gutbrain.png` to `gutbrain.svg`
