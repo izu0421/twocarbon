@@ -943,6 +943,9 @@ p {
 .product-image-wrap img {
   border-radius: var(--radius-lg);
   width: 100%;
+  max-height: 380px;
+  object-fit: contain;
+  object-position: center;
   box-shadow: var(--shadow-lg);
 }
 

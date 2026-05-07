@@ -4,7 +4,14 @@ Record specific code changes after each commit. Most recent first.
 
 ---
 
-## [latest] — science blog posts published
+## [latest] — add media images + purchase page image resize
+
+- `media/`: committed new image assets: blog-meet-the-neuron.png, blog-neuron.svg, brain.webp, brainstrong.png, gutbrain.png, pills-pack.png, pipette.jpg, science.jpg
+- `css/style.css`: `.product-image-wrap img` — added `max-height: 380px; object-fit: contain` to shrink product image and remove blue gap between tester cards on purchase page
+
+---
+
+## [prev] — science blog posts published
 
 - `blog.html`: replaced "Coming soon." with 6-card grid using existing `.blog-grid` / `.blog-card` CSS
 - New posts: `blog-meet-the-neuron.html`, `blog-what-is-alzheimers.html`, `blog-what-is-a-metabolite.html`, `blog-neuronal-resilience.html`, `blog-gut-brain-cognition.html`, `blog-one-carbon-pathway.html`
