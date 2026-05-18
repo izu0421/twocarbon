@@ -4,7 +4,16 @@ Record specific code changes after each commit. Most recent first.
 
 ---
 
-## [latest] — mailing list added
+## [latest] — fixed fillout forms. hid 1c pathway blog post.
+
+- `contact.html`: switched to Formspree endpoint mqejkwkb (Contact Us form)
+- `index.html`: switched mailing list to Formspree endpoint mykvylyd
+- `purchase.html`: switched waiting list to Formspree endpoint xvzyodpj
+- `blog.html`: commented out blog-one-carbon-pathway card
+
+---
+
+## [prev] — mailing list added
 
 - `index.html`: added mailing list banner above footer — email input with white placeholder text, submits to jake@onecarbon.com with subject "Mailing List Sign-Up"
 
