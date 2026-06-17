@@ -552,8 +552,39 @@
 
         <div class="step-nav">
           <button type="button" class="btn-back" onclick="prevStep()">Back</button>
-          <button type="button" class="btn-next" onclick="submitAssessment()">Submit</button>
+          <button type="button" class="btn-next" onclick="goToCognitive()">Continue</button>
         </div>
+      </div>
+
+      <!-- ═══════════ COGNITIVE INTRO (optional battery) ═══════════ -->
+      <div class="step" data-step="cog-intro">
+        <div class="step-title">Optional: cognitive tasks</div>
+        <div class="step-subtitle">A short set of brain games (about 8–10 minutes).</div>
+
+        <div class="question-block">
+          <p style="color:var(--text-muted);font-size:0.95rem;line-height:1.7;">
+            These seven quick tasks measure things like memory, attention, and processing speed.
+            They're modelled on established research cognitive tests and help us understand how
+            1C-01 relates to cognition over time. They're completely optional — you can skip
+            straight to submitting your answers.
+          </p>
+          <p class="helper-text" style="margin-top:8px;">Best done on a larger screen, somewhere quiet and free from distractions.</p>
+        </div>
+
+        <div class="step-nav">
+          <button type="button" class="btn-back" onclick="prevStep()">Back</button>
+          <div style="display:flex;gap:12px;margin-left:auto;">
+            <button type="button" class="btn-back" onclick="skipCognitive()">Skip &amp; submit</button>
+            <button type="button" class="btn-next" style="margin-left:0;" onclick="beginCognitive()">Begin tasks</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- ═══════════ COGNITIVE BATTERY (rendered by cognitive-tests.js) ═══════════ -->
+      <div class="step" data-step="cog-run">
+        <div class="step-title">Cognitive tasks</div>
+        <div class="step-subtitle" id="cogSubtitle">Follow the instructions for each task.</div>
+        <div id="cogTestContainer"></div>
       </div>
 
       <!-- ═══════════ COMPLETION ═══════════ -->
@@ -605,6 +636,7 @@
   </footer>
 
   <script src="js/main.js"></script>
+  <script src="js/cognitive-tests.js"></script>
   <script>
   (function() {
     // ══════════════════════════════════════════════════════
@@ -627,6 +659,8 @@
 
     var currentStep = 1;
     var totalSteps = 7;
+    var cogResults = {};            // filled by the cognitive battery
+    var cognitiveStatus = 'not_offered';
 
     function updateProgress() {
       var pct = ((currentStep - 1) / totalSteps) * 100;
@@ -654,6 +688,36 @@
         currentStep--;
         showStep(currentStep);
       }
+    };
+
+    // ── Cognitive battery flow ──
+    window.goToCognitive = function() {
+      showStep('cog-intro');
+      document.getElementById('progressFill').style.width = '90%';
+    };
+
+    window.skipCognitive = function() {
+      cognitiveStatus = 'skipped';
+      submitAssessment();
+    };
+
+    window.beginCognitive = function() {
+      cognitiveStatus = 'started';
+      showStep('cog-run');
+      var container = document.getElementById('cogTestContainer');
+      var subtitle = document.getElementById('cogSubtitle');
+      CognitiveTests.start(container, {
+        onProgress: function(doneCount, total) {
+          if (subtitle) subtitle.textContent = 'Task ' + (doneCount + 1) + ' of ' + total;
+          var pct = 90 + (doneCount / total) * 10;
+          document.getElementById('progressFill').style.width = pct + '%';
+        },
+        onComplete: function(results) {
+          cogResults = results || {};
+          cognitiveStatus = 'completed';
+          submitAssessment();
+        }
+      });
     };
 
     // Highlight selected options
@@ -745,6 +809,13 @@
       // Hidden score
       var score = calculateScore();
       data.sleepiness_score = score !== null ? score : 'incomplete';
+
+      // Cognitive battery results (hidden — for our use only)
+      data.cognitive_status = cognitiveStatus;
+      Object.keys(cogResults).forEach(function(k) {
+        data[k] = cogResults[k];
+      });
+
       data.submitted_at = new Date().toISOString();
 
       return data;
@@ -753,9 +824,13 @@
     // ── Submit ──
     window.submitAssessment = function() {
       var data = collectFormData();
-      var btn = document.querySelector('.step[data-step="7"] .btn-next');
-      btn.disabled = true;
-      btn.textContent = 'Submitting...';
+      // Disable any visible action buttons on the active step and show progress
+      var activeStep = document.querySelector('.step.active');
+      var buttons = activeStep ? activeStep.querySelectorAll('button') : [];
+      var primary = activeStep ? activeStep.querySelector('.btn-next') : null;
+      var primaryLabel = primary ? primary.textContent : '';
+      buttons.forEach(function(b) { b.disabled = true; });
+      if (primary) primary.textContent = 'Submitting...';
 
       fetch(FORMSPREE_ENDPOINT, {
         method: 'POST',
@@ -771,8 +846,8 @@
         }
       })
       .catch(function() {
-        btn.disabled = false;
-        btn.textContent = 'Submit';
+        buttons.forEach(function(b) { b.disabled = false; });
+        if (primary) primary.textContent = primaryLabel;
         alert('Something went wrong. Please try again, or email us at yizhou@onecarbon.com.');
       });
     };
