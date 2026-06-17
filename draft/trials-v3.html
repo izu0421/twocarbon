@@ -8,6 +8,51 @@
   <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
   <link rel="stylesheet" href="css/style.css">
+
+  <script type="importmap">
+    { "imports": { "three": "https://unpkg.com/three@0.160.0/build/three.module.js" } }
+  </script>
+
+  <style>
+    /* Header: neuron fills everything, text floats on top */
+    .page-header.profile-header {
+      position: relative;
+      overflow: hidden;
+      min-height: 520px;
+    }
+
+    .profile-header-text {
+      position: relative;
+      z-index: 1;
+      max-width: 500px;
+    }
+
+    .profile-header-text h1 {
+      white-space: normal;
+    }
+
+    .profile-header-text p {
+      max-width: none;
+    }
+
+    /* Neuron fills the entire header — no hard left edge */
+    .neuron-stage {
+      position: absolute;
+      inset: 0;
+      pointer-events: none;
+      z-index: 0;
+    }
+
+    #neuron-canvas {
+      width: 100%;
+      height: 100%;
+      display: block;
+    }
+
+    @media (max-width: 900px) {
+      .neuron-stage { display: none; }
+    }
+  </style>
 </head>
 <body>
 
@@ -17,6 +62,7 @@
     <ul class="nav-links">
       <li><a href="our_story.html">Our Story</a></li>
       <li><a href="research.html">Research</a></li>
+      <li><a href="trials-v3.html">Clinical Trials</a></li>
       <li><a href="blog.html">Blog</a></li>
       <li><a href="contact.html">Contact</a></li>
       <li><a href="purchase.html" class="nav-cta">Probiotics</a></li>
@@ -26,18 +72,29 @@
 
   <!-- ── PAGE HEADER ── -->
   <header class="page-header profile-header">
-    <h1>Our Clinical <em style="font-style:normal;color:#1a73e8;">Trials</em></h1>
-    <p>This is where we list our active clinical trials. PROFILE, our first trial, is outlined below.</p>
-    <h2 style="margin-top:48px;">The <em>PROFILE</em> Study</h2>
-    <p style="font-size:13px;font-style:italic;color:var(--text-muted);margin-top:4px;margin-bottom:32px;">Probiotic Research: Open-label Functional Intervention and Longitudinal Evaluation in Healthy Adults</p>
-    <p>
-      PROFILE is OneCarbon's phase one clinical trial for 1C-01, our probiotic designed to support neuronal resilience.
-      In this trial, we are investigating probiotic survival in your gut
-      and metabolic responses in your blood.
-      <br><br>
-      By taking part, you'll receive 1C-01 along with personalised blood-test monitoring,
-      and your data will directly inform our ongoing clinical research.
-    </p>
+
+    <!-- Left: text -->
+    <div class="profile-header-text">
+      <h1>Our Clinical <em style="font-style:normal;color:#1a73e8;">Trials</em></h1>
+      <p>This is where we list our active clinical trials. PROFILE, our first trial, is outlined below.</p>
+      <h2 style="margin-top:48px;">The <em>PROFILE</em> Study</h2>
+      <p style="font-size:13px;font-style:italic;color:var(--text-muted);margin-top:4px;margin-bottom:32px;">Probiotic Research: Open-label Functional Intervention and Longitudinal Evaluation in Healthy Adults</p>
+      <p>
+        PROFILE is OneCarbon's phase one clinical trial for 1C-01, our probiotic designed to support neuronal resilience.
+        In this trial, we are investigating probiotic survival in your gut
+        and metabolic responses in your blood.
+        <br><br>
+        By taking part, you'll receive 1C-01 along with personalised blood-test monitoring,
+        and your data will directly inform our ongoing clinical research.
+      </p>
+    </div>
+
+    <!-- Right: neuron fills from nav bar to bottom of header, page edge to right -->
+    <div class="neuron-stage">
+      <canvas id="neuron-canvas"></canvas>
+
+    </div>
+
   </header>
 
   <!-- ── WHAT IS PROFILE ── -->
@@ -83,62 +140,32 @@
     <h2>Be a hero. <em style="color:var(--text)">Join </em><em>PROFILE</em></h2>
     <p>Fill in the form below and a member of our team will be in touch soon.</p>
 
-    <form class="profile-form" action="https://formsubmit.co/jake@onecarbon.com" method="POST" target="_blank">
+    <form class="profile-form" action="https://formsubmit.co/yizhou@onecarbon.com" method="POST" target="_blank">
       <input type="hidden" name="_subject" value="FORM RESPONSE">
       <input type="text" name="_honey" style="display:none">
       <div class="form-row">
         <div>
-          <input
-            class="form-control"
-            type="text"
-            name="name"
-            placeholder="Full Name"
-            required
-          >
+          <input class="form-control" type="text" name="name" placeholder="Full Name" required>
         </div>
         <div>
-          <input
-            class="form-control"
-            type="email"
-            name="email"
-            placeholder="Email Address"
-            required
-          >
+          <input class="form-control" type="email" name="email" placeholder="Email Address" required>
         </div>
       </div>
       <div class="form-row">
         <div>
-          <input
-            class="form-control"
-            type="text"
-            name="location"
-            placeholder="Location"
-          >
+          <input class="form-control" type="text" name="location" placeholder="Location">
         </div>
         <div>
-          <input
-            class="form-control"
-            type="number"
-            name="age"
-            placeholder="Age"
-            min="18"
-            max="120"
-          >
+          <input class="form-control" type="number" name="age" placeholder="Age" min="18" max="120">
         </div>
       </div>
       <div class="form-group">
-        <textarea
-          class="form-control"
-          name="questions"
-          placeholder="Any questions for us?"
-          rows="4"
-        ></textarea>
+        <textarea class="form-control" name="questions" placeholder="Any questions for us?" rows="4"></textarea>
       </div>
       <button class="submit-btn" type="submit">Apply for PROFILE →</button>
     </form>
   </section>
 
-  <!-- ── FOOTER ── -->
   <!-- ── RECOGNISED BY ── -->
   <section class="recognised-by-section">
     <div class="recognised-by-logos">
@@ -153,6 +180,7 @@
     <div class="footer-logo">One<span>Carbon</span></div>
     <nav class="footer-links">
       <a href="research.html">Research</a>
+      <a href="trials-v3.html">Clinical Trials</a>
       <a href="team.html">Team</a>
       <a href="purchase.html">Probiotics</a>
       <a href="contact.html">Contact</a>
@@ -172,10 +200,13 @@
         <a href="privacy.html">Privacy Policy</a>
         <a href="cookie.html">Cookie Policy</a>
       </nav>
-      <p class="footer-copy">© 2025 OneCarbon. All rights reserved.</p>
+      <p class="footer-copy">© 2026 OneCarbon. All rights reserved.</p>
     </div>
   </footer>
 
   <script src="js/main.js"></script>
+  <script>window.NEURON_OPTS = { speed: 50, shiftX: -4.5 };</script>
+  <script type="module" src="js/neuron-portable.js"></script>
+
 </body>
 </html>

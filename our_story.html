@@ -2,6 +2,7 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
+  <link rel="icon" type="image/png" href="favicon.png">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Our Story — OneCarbon</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -46,10 +47,10 @@
       line-height: 1.05; letter-spacing: -0.03em;
       margin: 16px 0 22px; color: var(--text);
     }
-    .story-hero h1 em { font-style: normal; font-weight: 300; color: #1a73e8; }
+    .story-hero h1 em { font-style: normal; color: #456BB7; }
     .story-hero p { max-width: 560px; font-size: 17px; line-height: 1.55; color: var(--text-muted); margin: 0; }
     .scroll-hint {
-      margin-top: 40px; font-size: 11px; letter-spacing: 0.2em;
+      margin-top: 40px; font-size: 15px; letter-spacing: 0.2em;
       text-transform: uppercase; color: var(--text-faint);
       display: flex; align-items: center; gap: 12px;
     }
@@ -78,7 +79,7 @@
       box-shadow: 0 20px 60px -10px rgba(10,15,26,0.18);
     }
     .tl-tag {
-      display: inline-block; font-size: 11px; letter-spacing: 0.16em;
+      display: inline-block; font-size: 15px; letter-spacing: 0.16em;
       text-transform: uppercase; color: var(--text-faint);
       padding: 4px 10px; border: 1px solid var(--border); border-radius: 0;
       margin-bottom: 16px; background: rgba(247,245,240,0.8); backdrop-filter: blur(6px);
@@ -124,7 +125,7 @@
     .tl-photos .tl-figure .tl-photo { width: 100%; }
     .tl-figure figcaption {
       font-family: 'Outfit', sans-serif;
-      font-size: 12px; color: var(--text);
+      font-size: 14px; color: var(--text);
       text-align: center; margin-top: 6px; line-height: 1.4;
       opacity: 0.55; transition: opacity 0.5s ease;
     }
@@ -153,7 +154,7 @@
       font-size: clamp(2rem, 3.5vw, 3.5rem); letter-spacing: -0.03em;
       line-height: 1.1; margin: 0 0 18px; color: var(--text);
     }
-    .story-outro h2 em { font-style: italic; font-weight: 300; color: var(--text-muted); }
+    .story-outro h2 em { font-style: normal; color: #456BB7; }
     .story-outro p { color: var(--text-muted); max-width: 520px; margin: 0 auto; font-size: 16px; line-height: 1.6; }
     .story-outro .cta {
       display: inline-block; margin-top: 28px;
@@ -175,7 +176,7 @@
       font-size: clamp(2rem, 3.5vw, 3.5rem); letter-spacing: -0.03em;
       margin: 8px 0 0; color: var(--text);
     }
-    .story-team-label h2 em { font-style: normal; color: #1a73e8; }
+    .story-team-label h2 em { font-style: normal; color: #456BB7; }
 
     /* ── Responsive ── */
     @media (max-width: 900px) {
@@ -230,13 +231,14 @@
 
   <!-- ── NAVIGATION ── -->
   <nav class="site-nav">
-    <a href="index.html" class="nav-logo">One<span>Carbon</span></a>
+    <a href="index.html" class="nav-logo" style="display:flex;align-items:center;gap:6px;"><img src="media/logo-mark.png" alt="OneCarbon" style="height:28px;width:auto;">One<span style="color:#456BB7;font-weight:700;">Carbon</span></a>
     <ul class="nav-links">
       <li><a href="our_story.html">Our Story</a></li>
       <li><a href="research.html">Research</a></li>
-      <li><a href="blog.html">Blog</a></li>
+      <li><a href="index.html#how-it-works">How it works</a></li>
+      <li><a href="blog/">Blog &amp; Press</a></li>
       <li><a href="contact.html">Contact</a></li>
-      <li><a href="purchase.html" class="nav-cta">Probiotics</a></li>
+      <li><a href="purchase.html" class="nav-cta">Get early access</a></li>
     </ul>
     <button class="nav-hamburger" aria-label="Toggle menu" aria-expanded="false"><span></span><span></span><span></span></button>
   </nav>
@@ -245,7 +247,7 @@
   <section class="story-hero">
     <div class="story-hero-inner">
       <h1>How we started, and where we're <em>going.</em></h1>
-      <p>We wanted to know how Alzheimer's works. <br>Now we want to prevent it.</p>
+      <p>We wanted to understand how Alzheimer's works. <br>That question led us to the one-carbon pathway.</p>
     </div>
   </section>
 
@@ -326,18 +328,28 @@
         <div class="tl-content">
         <h2 class="tl-year">2025</h2>
           <div class="tl-card">
-          <h3>Pilot testing and Alzheimer's Society Innovation Launchpad</h3>
-          <p>We do our first MVP launch with our local pilot group. OneCarbon is 
-            selected to join Alzheimer's Society's Innovation Launchpad programme.
-          </p>
+          <h3>Pilot testing</h3>
+          <p>We do our first MVP launch with our local pilot group.</p>
         </div>
-        <img class="tl-photo" src="media/logo-launchpad.png" alt="" style="margin-top: 16px; width: 100%;">
         </div>
         <div class="tl-photos">
           <figure class="tl-figure" style="width: 340px;">
             <img class="tl-photo tl-photo--framed" src="media/laura-jake-moustache.png" alt="">
-            <figcaption>Laura &amp; (poorly-moustached) Jake with our first biomarker kit prototype</figcaption>
+            <figcaption>Laura &amp; Jake with our first biomarker kit prototype</figcaption>
           </figure>
+        </div>
+      </article>
+
+      <article class="tl-item">
+        <div class="tl-content">
+        <h2 class="tl-year">2026</h2>
+          <div class="tl-card">
+          <h3>Alzheimer's Society Innovation Launchpad</h3>
+          <p>OneCarbon is selected to join Alzheimer's Society's Innovation Launchpad programme.</p>
+        </div>
+        <img class="tl-photo" src="media/logo-launchpad.png" alt="" style="margin-top: 16px; width: 100%;">
+        </div>
+        <div class="tl-photos">
           <figure class="tl-figure" style="width: 340px;">
             <img class="tl-photo tl-photo--framed" src="media/launchpad-team.jpeg" alt="">
             <figcaption>OneCarbon at the Alzheimer's Society's Launchpad event</figcaption>
@@ -345,7 +357,7 @@
         </div>
       </article>
 
-      <article class="tl-item">
+      <article class="tl-item right">
         <div class="tl-content">
         <h2 class="tl-year">Today</h2>
           <div class="tl-card">
@@ -355,7 +367,6 @@
           our clinical validation process.  </p>
         </div>
         </div>
-        <img class="tl-photo tl-photo--framed" src="media/timeline-today.jpg" alt="">
       </article>
 
     </section>
@@ -387,47 +398,12 @@
     </div>
 
     <div class="team-member" style="grid-column: span 2;">
-      <a href="https://www.linkedin.com/in/laura-l-galbraith/" class="team-photo-wrap" target="_blank">
-        <img src="media/laura.jpeg" alt="Laura Galbraith">
-      </a>
-      <h3>Laura Galbraith</h3>
-      <h4>Co-Founder</h4>
-      <p>First class Oxford graduate (Human Sciences). Previous experience in biotech start-ups (iPSCs, and medical interventions in beauty &amp; wellness), as well as financial services (Investment Banking). Motivated by family history of Alzheimer's Disease.</p>
-    </div>
-
-    <div class="team-member" style="grid-column: span 2;">
       <a href="https://www.linkedin.com/in/suleyman-noordeen-342659205/" class="team-photo-wrap" target="_blank">
         <img src="media/suleymannoordeen.jpeg" alt="Suleyman Noordeen">
       </a>
       <h3>Suleyman Noordeen</h3>
       <h4>Medical Lead</h4>
       <p>Student doctor with multiple years of experience contributing to clinical research. Repeatedly recognised for his ability to communicate complex science to a breadth of internal and external community members.</p>
-    </div>
-
-    <div class="team-member" style="grid-column: 3 / span 2;">
-      <a href="https://www.linkedin.com/in/jake-mcmillan-64a845209/" class="team-photo-wrap" target="_blank">
-        <img src="media/jake.jpeg" alt="Jake McMillan">
-      </a>
-      <h3>Jake McMillan</h3>
-      <h4>Co-Founder</h4>
-      <p>First class Oxford graduate (PPE). Previously founded a project management company supporting government contract operations. Operational experience from financial sector roles.</p>
-    </div>
-
-  </section>
-
-  <div class="story-team-label" style="padding-top: 60px;">
-    <h2><em>Advisors</em></h2>
-  </div>
-
-  <section class="team-grid team-grid--advisors">
-
-    <div class="team-member" style="grid-column: 3 / span 2;">
-      <a href="https://www.linkedin.com/in/simon-galbraith-7847613/" class="team-photo-wrap" target="_blank">
-        <img src="media/SimonGalbraith.jpeg" alt="Dr Simon Galbraith">
-      </a>
-      <h3>Dr Simon Galbraith</h3>
-      <h4>Chair</h4>
-      <p>Previously the CEO and co-founder of Redgate Software for 20+ years. Chair at RoboK. Founder and Chief Executive of Cade Hill; Board member of numerous companies in the software and biotech sector.</p>
     </div>
 
   </section>
@@ -447,9 +423,9 @@
     <div class="footer-logo">One<span>Carbon</span></div>
     <nav class="footer-links">
       <a href="research.html">Research</a>
-      <a href="purchase.html">Probiotics</a>
+      <a href="purchase.html">Get early access</a>
       <a href="contact.html">Contact</a>
-      <a href="refund-policy.html">Refund Policy</a>
+      <a href="legal/refund-policy.html">Refund Policy</a>
     </nav>
     <div class="social-links">
       <a href="https://www.linkedin.com/company/healthspan-biotics/posts/?feedView=all" target="_blank" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
@@ -461,11 +437,11 @@
         <p>Registered Office: Unit 5 Avenue Business Park, Brockley Road, Elsworth, Cambridgeshire, United Kingdom, CB23 4EY</p>
       </div>
       <nav class="footer-legal">
-        <a href="tos.html">Terms of Service</a>
-        <a href="privacy.html">Privacy Policy</a>
-        <a href="cookie.html">Cookie Policy</a>
+        <a href="legal/tos.html">Terms of Service</a>
+        <a href="legal/privacy.html">Privacy Policy</a>
+        <a href="legal/cookie.html">Cookie Policy</a>
       </nav>
-      <p class="footer-copy">© 2025 OneCarbon. All rights reserved.</p>
+      <p class="footer-copy">© 2026 OneCarbon. All rights reserved.</p>
     </div>
   </footer>
 
